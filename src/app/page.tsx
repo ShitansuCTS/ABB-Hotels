@@ -28,25 +28,17 @@ import ServicesCard from "@/components/ServicesCard";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: "Home | EliteStay - Hotel Booking Multi-Purpose Next Js Template",
+    title: "ABB Hotel | Luxury Hotel in Bhubaneswar",
     description:
-      "EliteStay is a professional Next JS Template for Hotel Booking Multi-Purpose services. Clean design, responsive layout, and modern UI components included.",
-    openGraph: {
-      title: "Home | EliteStay",
-      description:
-        "EliteStay is a professional Next JS Template for Hotel Booking Multi-Purpose services. Clean design, responsive layout, and modern UI components included.",
-      url: "https://nextjs.elitestay.wowtheme7.com",
-      type: "website",
-      images: [
-        {
-          url: "https://nextjs.elitestay.wowtheme7.com/images/meta.png",
-          width: 1200,
-          height: 630,
-          alt: "elitestay",
-        },
+      "Experience comfort, elegance, and warm hospitality at ABB Hotel, Bhubaneswar. Discover premium rooms, modern amenities, and a memorable stay.",
+    icons: {
+      icon: [
+        { url: "/assets/images/abb-hotel/logo-golden.webp" },
       ],
+      apple: "/assets/images/abb-hotel/apple-logo-golden.webpg",
     },
   };
+
 };
 
 export default function Home() {
