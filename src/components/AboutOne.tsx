@@ -62,9 +62,9 @@ const AboutOne: FC = () => {
               >
                 <Link
                   className='tw-btn-hover-black bg-main-600 tw-py-5 tw-px-12 text-capitalize text-heading font-heading d-inline-flex align-items-center tw-gap-2 tw-rounded-lg'
-                  href='/gallery'
+                  href='#contact'
                 >
-                  Explore More
+                  Enquiry for Booking
                   <span className='d-inline-block lh-1 tw-text-lg'>
                     <i className='ph ph-arrow-up-right' />
                   </span>

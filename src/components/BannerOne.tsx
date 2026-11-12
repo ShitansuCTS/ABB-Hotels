@@ -31,13 +31,13 @@ const BannerOne: FC = () => {
                     className='tw-btn-hover-white bg-main-600 tw-py-5 tw-px-12 text-heading font-heading d-inline-flex align-items-center tw-gap-3 tw-rounded-lg'
                     href='/contact'
                   >
-                    Booking today{" "}
+                    Enquiry for Booking{" "}
                     <span className='d-inline-block lh-1 tw-text-lg'>
                       <i className='ph ph-arrow-up-right' />
                     </span>
                   </Link>
                 </div>
-                <div className=''>
+                {/* <div className=''>
                   <div className='d-flex align-items-center tw-gap-2'>
                     <span className='tw-text-xl text-white font-heading'>
                       5.0
@@ -65,7 +65,7 @@ const BannerOne: FC = () => {
                       From 2,000+ reviews
                     </p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

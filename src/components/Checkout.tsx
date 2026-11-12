@@ -174,7 +174,7 @@ const Checkout: FC = () => {
                 <div className='checkout-wrapper z-0'>
                   <div className='checkout-button common-hover-yellow'>
                     <button className='tw-btn-hover-black bg-main-600 tw-py-5 tw-px-7 text-uppercase text-heading font-heading d-inline-flex align-items-center tw-gap-2 tw-rounded-lg'>
-                      EXPLORE MORE{" "}
+                      Enquiry Now{" "}
                       <span className='d-inline-block lh-1 tw-text-lg'>
                         <i className='ph ph-arrow-up-right' />
                       </span>

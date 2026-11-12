@@ -25,7 +25,7 @@ const ReservationOne: FC = () => {
               <div className='tw-mt-6 text-center'>
                 <div className='cta-form d-flex tw-gap-2 justify-content-center flex-wrap row-gap-3'>
                   <button className='tw-btn-hover-white bg-main-600 tw-py-4 tw-px-8 text-uppercase text-heading font-heading d-inline-flex align-items-center tw-gap-2 tw-rounded-lg'>
-                    Book Now{" "}
+                    Enquiry for Booking{" "}
                     <span className='d-inline-block lh-1 tw-text-lg'>
                       <i className='ph ph-arrow-up-right' />
                     </span>

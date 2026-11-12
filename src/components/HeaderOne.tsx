@@ -215,7 +215,7 @@ const HeaderOne: FC = () => {
                   className='tw-btn-hover-yellow bg-white tw-py-5 tw-px-7 text-uppercase text-heading font-heading d-inline-flex align-items-center tw-gap-2 tw-rounded-lg'
                   href='#contact'
                 >
-                  Book Your Stay{" "}
+                  Enquiry for Booking {" "}
                   <span className='d-inline-block lh-1 tw-text-lg'>
                     <i className='ph ph-arrow-up-right' />
                   </span>
