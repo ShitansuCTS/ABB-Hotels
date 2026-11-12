@@ -29,7 +29,7 @@ const BannerOne: FC = () => {
                 <div>
                   <Link
                     className='tw-btn-hover-white bg-main-600 tw-py-5 tw-px-12 text-heading font-heading d-inline-flex align-items-center tw-gap-3 tw-rounded-lg'
-                    href='/contact'
+                    href='#contact'
                   >
                     Enquiry for Booking{" "}
                     <span className='d-inline-block lh-1 tw-text-lg'>

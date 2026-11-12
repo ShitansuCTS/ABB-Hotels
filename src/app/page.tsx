@@ -54,7 +54,7 @@ export default function Home() {
       <BannerOne />
 
       {/* Checkout */}
-      <Checkout />
+      {/* <Checkout /> */}
 
       {/* AboutOne */}
       <AboutOne />

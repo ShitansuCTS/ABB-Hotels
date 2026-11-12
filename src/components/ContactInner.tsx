@@ -1,7 +1,93 @@
+'use client';
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useState } from "react";
+
 
 const ContactInner: FC = () => {
+
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | "";
+    message: string;
+  }>({
+    type: "",
+    message: "",
+  });
+
+  const today = new Date();
+  const minDate = [
+    today.getFullYear(),
+    String(today.getMonth() + 1).padStart(2, "0"),
+    String(today.getDate()).padStart(2, "0"),
+  ].join("-");
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
+    e.preventDefault();
+
+    setStatus({ type: "", message: "" });
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    if (!checkIn || !checkOut || checkOut <= checkIn) {
+      setStatus({
+        type: "error",
+        message: "Please select valid check-in and check-out dates.",
+      });
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          checkIn,
+          checkOut,
+          guests: formData.get("guests"),
+          rooms: formData.get("rooms"),
+          message: formData.get("message"),
+        }),
+      });
+
+      const result: { success?: boolean; message?: string } =
+        await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Unable to send enquiry.");
+      }
+
+      setStatus({
+        type: "success",
+        message: result.message || "Booking enquiry sent successfully!",
+      });
+
+      form.reset();
+      setCheckIn("");
+      setCheckOut("");
+    } catch (error: unknown) {
+      setStatus({
+        type: "error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Something went wrong.",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <section className='bg_2 pt-120' id='contact'>
       <div className='container'>
@@ -161,54 +247,193 @@ const ContactInner: FC = () => {
                       are marked *
                     </p>
                   </div>
-                  <form action='#'>
-                    <div className='row'>
-                      <div className='col-xl-12'>
-                        <div className='position-relative tw-mb-11'>
-                          <span className='position-absolute top-50 start-0 translate-middle-y text-heading tw-text-xl'>
-                            <i className='ph-bold ph-user' />
+                  <form onSubmit={handleSubmit}>
+                    <div className="row">
+
+                      {/* Name */}
+                      <div className="col-xl-6">
+                        <div className="position-relative tw-mb-11">
+                          <span className="position-absolute top-50 start-0 translate-middle-y text-heading tw-text-xl">
+                            <i className="ph-bold ph-user" />
                           </span>
                           <input
-                            type='text'
-                            className='form-control rounded-0 bg-white shadow-none border-none border-bottom border-bottom-neutral text-heading tw-ps-8 tw-pe-13 focus-border-main-600 tw-h-14 tw-placeholder-text-neutral-700 focus-tw-placeholder-text-hidden tw-placeholder-transition-2'
-                            placeholder='Your Name*'
+                            type="text"
+                            name="name"
+                            required
+                            maxLength={100}
+                            className="form-control rounded-0 bg-white shadow-none border-none border-bottom border-bottom-neutral text-heading tw-ps-8 tw-pe-13 focus-border-main-600 tw-h-14 tw-placeholder-text-neutral-700"
+                            placeholder="Your Name*"
                           />
                         </div>
                       </div>
-                      <div className='col-xl-12'>
-                        <div className='position-relative tw-mb-11'>
-                          <span className='position-absolute top-50 start-0 translate-middle-y text-heading tw-text-xl'>
-                            <i className='ph ph-envelope' />
+
+                      {/* Email */}
+                      <div className="col-xl-6">
+                        <div className="position-relative tw-mb-11">
+                          <span className="position-absolute top-50 start-0 translate-middle-y text-heading tw-text-xl">
+                            <i className="ph ph-envelope" />
                           </span>
                           <input
-                            type='email'
-                            className='form-control rounded-0 bg-white shadow-none border-none border-bottom border-bottom-neutral text-heading tw-ps-8 tw-pe-13 focus-border-main-600 tw-h-14 tw-placeholder-text-neutral-700 focus-tw-placeholder-text-hidden tw-placeholder-transition-2'
-                            placeholder='Email Address**'
+                            type="email"
+                            name="email"
+                            required
+                            maxLength={254}
+                            className="form-control rounded-0 bg-white shadow-none border-none border-bottom border-bottom-neutral text-heading tw-ps-8 tw-pe-13 focus-border-main-600 tw-h-14 tw-placeholder-text-neutral-700"
+                            placeholder="Email Address*"
                           />
                         </div>
                       </div>
-                      <div className='col-xl-12'>
-                        <div className='position-relative tw-mb-11'>
-                          <span className='position-absolute top-0 start-0 tw-mt-1 text-heading tw-text-xl'>
-                            <i className='ph-bold ph-note-pencil' />
+
+                      {/* Phone */}
+                      <div className="col-xl-12">
+                        <div className="position-relative tw-mb-11">
+                          <span className="position-absolute top-50 start-0 translate-middle-y text-heading tw-text-xl">
+                            <i className="ph ph-phone" />
+                          </span>
+                          <input
+                            type="tel"
+                            name="phone"
+                            required
+                            maxLength={20}
+                            className="form-control rounded-0 bg-white shadow-none border-none border-bottom border-bottom-neutral text-heading tw-ps-8 tw-pe-13 focus-border-main-600 tw-h-14 tw-placeholder-text-neutral-700"
+                            placeholder="Phone Number*"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Check-in */}
+                      <div className="col-xl-6 col-md-6">
+                        <div className="position-relative tw-mb-11">
+                          <span className="position-absolute top-50 start-0 translate-middle-y text-heading tw-text-xl">
+                            <i className="ph ph-calendar-check" />
+                          </span>
+                          <input
+                            type="date"
+                            name="checkIn"
+                            required
+                            min={minDate}
+                            value={checkIn}
+                            onChange={(e) => {
+                              setCheckIn(e.target.value);
+                              if (checkOut && e.target.value >= checkOut) {
+                                setCheckOut("");
+                              }
+                            }}
+                            className="form-control rounded-0 bg-white shadow-none border-none border-bottom border-bottom-neutral text-heading tw-ps-8 tw-pe-3 focus-border-main-600 tw-h-14"
+                            aria-label="Check-in date"
+                          />
+                          {/* <small className="text-muted">Check-in Date*</small> */}
+                        </div>
+                      </div>
+
+                      {/* Check-out */}
+                      <div className="col-xl-6 col-md-6">
+                        <div className="position-relative tw-mb-11">
+                          <span className="position-absolute top-50 start-0 translate-middle-y text-heading tw-text-xl">
+                            <i className="ph ph-calendar-x" />
+                          </span>
+                          <input
+                            type="date"
+                            name="checkOut"
+                            required
+                            min={checkIn || minDate}
+                            value={checkOut}
+                            onChange={(e) => setCheckOut(e.target.value)}
+                            className="form-control rounded-0 bg-white shadow-none border-none border-bottom border-bottom-neutral text-heading tw-ps-8 tw-pe-3 focus-border-main-600 tw-h-14"
+                            aria-label="Check-out date"
+                          />
+                          {/* <small className="text-muted">Check-out Date*</small> */}
+                        </div>
+                      </div>
+
+                      {/* Guests */}
+                      <div className="col-xl-6 col-md-6">
+                        <div className="position-relative tw-mb-11">
+                          <span className="position-absolute top-50 start-0 translate-middle-y text-heading tw-text-xl">
+                            <i className="ph ph-users" />
+                          </span>
+                          <select
+                            name="guests"
+                            defaultValue="2"
+                            className="form-select rounded-0 bg-white shadow-none border-0 border-bottom border-bottom-neutral text-heading tw-ps-8 tw-h-14"
+                          >
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5 Guests</option>
+                            <option value="6">6+ Guests</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      {/* Rooms */}
+                      <div className="col-xl-6 col-md-6">
+                        <div className="position-relative tw-mb-11">
+                          <span className="position-absolute top-50 start-0 translate-middle-y text-heading tw-text-xl">
+                            <i className="ph ph-door" />
+                          </span>
+                          <select
+                            name="rooms"
+                            defaultValue="1"
+                            className="form-select rounded-0 bg-white shadow-none border-0 border-bottom border-bottom-neutral text-heading tw-ps-8 tw-h-14"
+                          >
+                            <option value="1">1 Room</option>
+                            <option value="2">2 Rooms</option>
+                            <option value="3">3 Rooms</option>
+                            <option value="4">4 Rooms</option>
+                            <option value="5">5+ Rooms</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      {/* Message */}
+                      <div className="col-xl-12">
+                        <div className="position-relative tw-mb-11">
+                          <span className="position-absolute top-0 start-0 tw-mt-1 text-heading tw-text-xl">
+                            <i className="ph-bold ph-note-pencil" />
                           </span>
                           <textarea
-                            className='form-control rounded-0 tw-h-135-px bg-white shadow-none border-none border-bottom border-bottom-neutral text-heading tw-ps-8 tw-pe-13 focus-border-main-600 tw-placeholder-text-neutral-700 focus-tw-placeholder-text-hidden tw-placeholder-transition-2'
-                            placeholder='Enter Your Message here'
-                            defaultValue={""}
+                            name="message"
+                            maxLength={1000}
+                            className="form-control rounded-0 tw-h-135-px bg-white shadow-none border-none border-bottom border-bottom-neutral text-heading tw-ps-8 tw-pe-13 focus-border-main-600 tw-placeholder-text-neutral-700"
+                            placeholder="Enter Your Message here"
                           />
                         </div>
                       </div>
-                      <div className='col-xl-12'>
-                        <div>
-                          <button className='tw-btn-hover-black bg-main-600 tw-py-5 tw-px-14 text-capitalize text-heading font-heading d-inline-flex align-items-center tw-gap-2 tw-rounded-lg'>
-                            Send us Mesaage{" "}
-                            <span className='d-inline-block lh-1 tw-text-lg'>
-                              <i className='ph ph-arrow-up-right' />
-                            </span>
-                          </button>
+
+                      {/* Response Message */}
+                      {status.message && (
+                        <div className="col-xl-12 tw-mb-5">
+                          <p
+                            className={
+                              status.type === "success"
+                                ? "text-success"
+                                : "text-danger"
+                            }
+                            role="status"
+                          >
+                            {status.message}
+                          </p>
                         </div>
+                      )}
+
+                      {/* Submit */}
+                      <div className="col-xl-12">
+                        <button
+                          type="submit"
+                          disabled={loading}
+                          className="tw-btn-hover-black bg-main-600 tw-py-5 tw-px-14 text-capitalize text-heading font-heading d-inline-flex align-items-center tw-gap-2 tw-rounded-lg"
+                        >
+                          {loading ? "Sending..." : "Send us Message"}
+                          {!loading && (
+                            <span className="d-inline-block lh-1 tw-text-lg">
+                              <i className="ph ph-arrow-up-right" />
+                            </span>
+                          )}
+                        </button>
                       </div>
+
                     </div>
                   </form>
                 </div>
