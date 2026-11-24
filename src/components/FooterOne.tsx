@@ -57,7 +57,7 @@ const FooterOne: FC = () => {
                     By subscribing, you’re accept{" "}
                     <Link
                       className='text-main-600 hover-text-white text-decoration-underline'
-                      href='#'
+                      href='/privacy-policy'
                     >
                       Privacy Policy
                     </Link>
@@ -122,7 +122,7 @@ const FooterOne: FC = () => {
                   <ul className='d-flex flex-column tw-gap-4'>
                     <li>
                       <Link
-                        href='#'
+                        href='/privacy-policy'
                         className='text--white hover-text-main-600 hover-underline'
                       >
                         Privacy Policy
@@ -130,7 +130,7 @@ const FooterOne: FC = () => {
                     </li>
                     <li>
                       <Link
-                        href='#'
+                        href='/refund-policy'
                         className='text--white hover-text-main-600 hover-underline'
                       >
                         Refund Policy
@@ -138,7 +138,7 @@ const FooterOne: FC = () => {
                     </li>
                     <li>
                       <Link
-                        href='#'
+                        href='/terms-and-conditions'
                         className='text--white hover-text-main-600 hover-underline'
                       >
                         Terms & Conditions
@@ -147,10 +147,10 @@ const FooterOne: FC = () => {
 
                     <li>
                       <Link
-                        href='#'
+                        href='/support24x7'
                         className='text--white hover-text-main-600 hover-underline'
                       >
-                        Suport 24/7
+                        Support 24/7
                       </Link>
                     </li>
                   </ul>
@@ -168,17 +168,17 @@ const FooterOne: FC = () => {
                   <ul className='d-flex flex-column tw-gap-4'>
 
                     <li>
-                      <Link href='#' className='text--white hover-text-main-600 hover-underline'>
+                      <Link href='#service' className='text--white hover-text-main-600 hover-underline'>
                         Guest Care
                       </Link>
                     </li>
                     <li>
-                      <Link href='#' className='text--white hover-text-main-600 hover-underline'>
+                      <Link href='#service' className='text--white hover-text-main-600 hover-underline'>
                         24/7 Room Service
                       </Link>
                     </li>
                     <li className='mb-0'>
-                      <Link href='#' className='text--white hover-text-main-600 hover-underline'>
+                      <Link href='#service' className='text--white hover-text-main-600 hover-underline'>
                         Guest Hospitality
                       </Link>
                     </li>
@@ -210,42 +210,42 @@ const FooterOne: FC = () => {
               >
                 <li>
                   <Link
-                    href='https://www.facebook.com'
+                    href='https://www.facebook.com/people/ABB-Hotels/61596589056036/?mibextid=wwXIfr&rdid=gs6nFhEFIKcYLHud&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1DoQsFotcL%2F%3Fmibextid%3DwwXIfr'
                     className='text--white tw-text-lg hover-text-main-600'
                   >
                     <i className='ph-bold ph-facebook-logo' />
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     href='https://www.twitter.com'
                     className='text--white tw-text-lg hover-text-main-600'
                   >
                     <i className='ph-bold ph-twitter-logo' />
                   </Link>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <Link
                     href='https://www.linkedin.com'
                     className='text--white tw-text-lg hover-text-main-600'
                   >
                     <i className='ph-bold ph-instagram-logo' />
                   </Link>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <Link
                     href='https://www.pinterest.com'
                     className='text--white tw-text-lg hover-text-main-600'
                   >
                     <i className='ph-bold ph-dribbble-logo' />
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link
-                    href='https://www.pinterest.com'
+                    href='https://www.instagram.com/abbhotels_official/'
                     className='text--white tw-text-lg hover-text-main-600'
                   >
-                    <i className='ph-bold ph-youtube-logo' />
+                    <i className='ph-bold ph-instagram-logo' />
                   </Link>
                 </li>
               </ul>

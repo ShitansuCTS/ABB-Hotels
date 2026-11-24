@@ -148,28 +148,32 @@ const ContactInner: FC = () => {
                         </div>
                       </div>
                     </div>
-                    <div className='col-xl-6 col-lg-6 col-md-6 col-sm-6'>
-                      <div className='d-flex tw-gap-4 tw-mb-13'>
-                        <div>
-                          <span className='d-inline-block lh-1 text-heading tw-text-3xl'>
-                            <i className='ph ph-globe' />
-                          </span>
-                        </div>
-                        <div>
-                          <h4 className='tw-text-2xl fw-normal tw-mb-3'>
-                            Website
-                          </h4>
-                          <Link
-                            className='fw-medium text-body d-block hover-text-main-600'
-                            href='https://abbhotels.in/'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                          >
-                            www.abbhotels.in
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
+                    
+<div className='col-xl-6 col-lg-6 col-md-6 col-sm-6'>
+  <div className='d-flex tw-gap-4 tw-mb-13'>
+    <div>
+      <span className='d-inline-block lh-1 text-heading tw-text-3xl'>
+        <i className='ph ph-envelope-simple' />
+      </span>
+    </div>
+
+    <div>
+      <h4 className='tw-text-2xl fw-normal tw-mb-3'>
+        Email Address
+      </h4>
+
+      <Link
+        className='fw-medium text-body d-block hover-text-main-600'
+        href='https://mail.google.com/mail/?view=cm&fs=1&to=abbhotelsmail@gmail.com'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        abbhotelsmail@gmail.com
+      </Link>
+    </div>
+  </div>
+</div>
+
                     <div className='col-xl-6 col-lg-6 col-md-6 col-sm-6'>
                       <div className='d-flex tw-gap-4 tw-mb-13'>
                         <div>
@@ -185,35 +189,35 @@ const ContactInner: FC = () => {
                             <li>
                               <Link
                                 className='tw-w-9 tw-h-9 lh-1 d-inline-flex align-items-center justify-content-center border border-neutral rounded-circle text-heading hover-bg-main-600 hover-text-heading hover-border-main-600'
-                                href='https://www.facebook.com'
+                                href='https://www.facebook.com/people/ABB-Hotels/61596589056036/?mibextid=wwXIfr&rdid=gs6nFhEFIKcYLHud&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1DoQsFotcL%2F%3Fmibextid%3DwwXIfr'
                               >
                                 <i className='ph-bold ph-facebook-logo' />
                               </Link>
                             </li>
-                            <li>
+                            {/* <li>
                               <Link
                                 className='tw-w-9 tw-h-9 lh-1 d-inline-flex align-items-center justify-content-center border border-neutral rounded-circle text-heading hover-bg-main-600 hover-text-heading hover-border-main-600'
                                 href='https://www.twitter.com'
                               >
                                 <i className='ph-bold ph-twitter-logo' />
                               </Link>
-                            </li>
+                            </li> */}
                             <li>
                               <Link
                                 className='tw-w-9 tw-h-9 lh-1 d-inline-flex align-items-center justify-content-center border border-neutral rounded-circle text-heading hover-bg-main-600 hover-text-heading hover-border-main-600'
-                                href='https://www.linkedin.com'
+                                href='https://www.instagram.com/abbhotels_official/'
                               >
                                 <i className='ph-bold ph-instagram-logo' />
                               </Link>
                             </li>
-                            <li>
+                            {/* <li>
                               <Link
                                 className='tw-w-9 tw-h-9 lh-1 d-inline-flex align-items-center justify-content-center border border-neutral rounded-circle text-heading hover-bg-main-600 hover-text-heading hover-border-main-600'
                                 href='https://www.pinterest.com'
                               >
                                 <i className='ph-bold ph-dribbble-logo' />
                               </Link>
-                            </li>
+                            </li> */}
                           </ul>
                         </div>
                       </div>

@@ -31,6 +31,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
     title: "Best Hotel in Patia, Bhubaneswar Near KIIT and Infocity - ABB Hotel",
     description:
       "Stay at ABB Hotel in Patia, Bhubaneswar, near KIIT University and Infocity. Enjoy elegant rooms, modern amenities, warm hospitality and a comfortable stay for business or leisure.",
+      alternates: {
+    canonical: "https://abbhotels.in/",
+  },
+
     icons: {
       icon: [
         { url: "/assets/images/abb-hotel/logo-golden.webp" },

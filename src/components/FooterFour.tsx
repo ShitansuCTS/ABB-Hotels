@@ -56,7 +56,7 @@ const FooterFour = () => {
                     By subscribing, you’re accept{" "}
                     <Link
                       className='text-main-600 hover-text-white text-decoration-underline'
-                      href='#'
+                      href='/privacy-policy'
                     >
                       Privacy Policy
                     </Link>
