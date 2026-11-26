@@ -28,9 +28,9 @@ const BannerOne: FC = () => {
                   EXPERIENCE ELEGANCE & COMFORT
                 </h6>
 
-                <h1 className="banner-title tw-text-29 text-white fw-normal tw-mb-10 tw-char-animation">
+                <h2 className="banner-title tw-text-29 text-white fw-normal tw-mb-10 tw-char-animation">
                   ABB Hotel – Stay in Elegance.
-                </h1>
+                </h2>
 
                 <div className="d-flex align-items-center flex-wrap row-gap-3 tw-gap-13">
                   <div>
