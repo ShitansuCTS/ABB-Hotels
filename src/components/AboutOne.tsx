@@ -41,9 +41,10 @@ const AboutOne: FC = () => {
                 <h6 className='section-subtitle tw-text-xl fw-medium text-uppercase tw-mb-4 text-main-600'>
                   Experience Comfort and Elegance
                 </h6>
-                <h2 className='section-title fw-normal tw-mb-7 tw-char-animation'>
-                  Luxury, Comfort &amp; Hospitality – Reasons to Stay With Us
-                </h2>
+                <h1 className='section-title fw-normal tw-mb-7 tw-char-animation'>
+                  {/* Luxury, Comfort &amp; Hospitality – Reasons to Stay With Us */}
+                  Best Hotel in Patia, Bhubaneswar - Rooms Near KIIT and Infocity
+                </h1>
                 <p className='tw-text-lg'>
                   Welcome to ABB Hotel, Bhubaneswar, where refined elegance meets
                   modern comfort. Enjoy thoughtfully designed rooms, warm hospitality,
